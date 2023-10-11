@@ -15,6 +15,9 @@ namespace CorrectifExoEfCore.Domain.EntitiesConfig
         {
             builder.ToTable("Film");
 
+            //builder.HasKey(x => x.Id);
+            //builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
             builder.HasIndex(nameof(Film.Title)).IsUnique();
 
             builder.Property(nameof(Film.Title))
@@ -34,6 +37,72 @@ namespace CorrectifExoEfCore.Domain.EntitiesConfig
                    .IsRequired();
 
             builder.HasCheckConstraint("CK_ReleaseYear", "ReleaseYear > 1975");
+
+            builder.HasData(
+                new Film
+                {
+                    Id = 1,
+                    Title = "Star Wars : Un nouvel espoir",
+                    ReleaseYear = 1977,
+                    MainActor = "Mark Hammil",
+                    Genre = "Science-Fiction",
+                    Realisator = "Georges Lucas"
+                },
+                new Film
+                {
+                    Id = 2,
+                    Title = "Star Wars : L'empire contre-attaque",
+                    ReleaseYear = 1980,
+                    MainActor = "Mark Hammil",
+                    Genre = "Science-Fiction",
+                    Realisator = "Georges Lucas"
+                },
+                new Film
+                {
+                    Id = 3,
+                    Title = "Star Wars : Le retour du Jedi",
+                    ReleaseYear = 1983,
+                    MainActor = "Mark Hammil",
+                    Genre = "Science-Fiction",
+                    Realisator = "Georges Lucas"
+                },
+                new Film
+                {
+                    Id = 4,
+                    Title = "Hooligans",
+                    ReleaseYear = 2005,
+                    MainActor = "Charlie Hunnam",
+                    Genre = "Société",
+                    Realisator = "Lexi Alexander"
+                },
+                new Film
+                {
+                    Id = 5,
+                    Title = "LOTR - La communauté de l'anneau",
+                    ReleaseYear = 2001,
+                    MainActor = "Elijah Wood",
+                    Genre = "Heroic-Fantasy",
+                    Realisator = "Peter Jackson"
+                },
+                new Film
+                {
+                    Id = 6,
+                    Title = "LOTR - Les deux tours",
+                    ReleaseYear = 2002,
+                    MainActor = "Elijah Wood",
+                    Genre = "Heroic-Fantasy",
+                    Realisator = "Peter Jackson"
+                },
+                new Film
+                {
+                    Id = 7,
+                    Title = "LOTR - Le retour du roi",
+                    ReleaseYear = 2003,
+                    MainActor = "Elijah Wood",
+                    Genre = "Heroic-Fantasy",
+                    Realisator = "Peter Jackson"
+                }
+                );
         }
     }
 }
