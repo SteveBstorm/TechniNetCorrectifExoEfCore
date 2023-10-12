@@ -11,9 +11,11 @@ namespace CorrectifExoEfCore.Domain
 {
     public class DataContext : DbContext
     {
-        private string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TechniNetCorrectifEFCore;Integrated Security=True;";
+        private string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TechniNetFilmEF;Integrated Security=True;";
 
         public DbSet<Film> MovieList { get; set; }
+        public DbSet<Person> PersonList { get; set; }
+        public DbSet<FilmPerson> Casting { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,6 +24,8 @@ namespace CorrectifExoEfCore.Domain
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new FilmConfig());
+            modelBuilder.ApplyConfiguration(new PersonConfig());
+            modelBuilder.ApplyConfiguration(new FilmPersonConfig());
         }
     }
 }
